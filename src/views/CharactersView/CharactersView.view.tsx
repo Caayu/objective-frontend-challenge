@@ -1,73 +1,19 @@
 import {
   Container,
-  CharacterArea,
-  CharacterList,
-  Character,
-  Series,
-  Events,
   Footer,
   Pagination,
   PaginationButton,
-  CharacterHeader,
   IconNavigation
 } from './styles'
 
 import Header from '../../components/Header'
-import SearchArea from '../../components/SearchArea'
+import CharacterArea from '../../components/CharactersArea'
 
 const CharactersView = () => {
   return (
     <Container>
       <Header />
-      <CharacterArea>
-        <SearchArea />
-        <CharacterHeader>
-          <span>Personagem</span>
-          <span>Séries</span>
-          <span>Eventos</span>
-        </CharacterHeader>
-        <CharacterList>
-          <Character>
-            <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-            <span>Bruce Banner</span>
-          </Character>
-          <Series>
-            Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-          </Series>
-          <Events>AvX Demon in the Bottle Dynasty M</Events>
-        </CharacterList>
-        <CharacterList>
-          <Character>
-            <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-            <span>Bruce Banner</span>
-          </Character>
-          <Series>
-            Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-          </Series>
-          <Events>AvX Demon in the Bottle Dynasty M</Events>
-        </CharacterList>
-        <CharacterList>
-          <Character>
-            <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-            <span>Bruce Banner</span>
-          </Character>
-          <Series>
-            Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-          </Series>
-          <Events>AvX Demon in the Bottle Dynasty M</Events>
-        </CharacterList>
-        <CharacterList>
-          <Character>
-            <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-            <span>Bruce Banner</span>
-          </Character>
-          <Series>
-            Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-          </Series>
-          <Events>AvX Demon in the Bottle Dynasty M</Events>
-        </CharacterList>
-      </CharacterArea>
-
+      <CharacterArea />
       <Footer>
         <Pagination>
           <IconNavigation>arrow_back</IconNavigation>
