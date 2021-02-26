@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { Container } from './styles'
+import * as S from './styles'
 
 const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -10,12 +10,12 @@ const SearchInput = () => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <input ref={inputRef} type="text" placeholder="Search" />
       <span onClick={handleFocus} className="material-icons">
         search
       </span>
-    </Container>
+    </S.Container>
   )
 }
 

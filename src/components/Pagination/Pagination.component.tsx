@@ -1,18 +1,18 @@
-import { Container, PaginationButton, IconNavigation } from './styles'
+import * as S from './styles'
 
 function Pagination () {
   return (
-    <Container>
-      <IconNavigation>arrow_back</IconNavigation>
-      <IconNavigation>arrow_back_ios</IconNavigation>
-      <PaginationButton>1</PaginationButton>
-      <PaginationButton active>2</PaginationButton>
-      <PaginationButton>3</PaginationButton>
-      <PaginationButton>4</PaginationButton>
-      <PaginationButton>5</PaginationButton>
-      <IconNavigation>arrow_forward_ios</IconNavigation>
-      <IconNavigation>arrow_forward</IconNavigation>
-    </Container>
+    <S.Container>
+      <S.IconNavigation>arrow_back</S.IconNavigation>
+      <S.IconNavigation>arrow_back_ios</S.IconNavigation>
+      <S.PaginationButton>1</S.PaginationButton>
+      <S.PaginationButton active>2</S.PaginationButton>
+      <S.PaginationButton>3</S.PaginationButton>
+      <S.PaginationButton>4</S.PaginationButton>
+      <S.PaginationButton>5</S.PaginationButton>
+      <S.IconNavigation>arrow_forward_ios</S.IconNavigation>
+      <S.IconNavigation>arrow_forward</S.IconNavigation>
+    </S.Container>
   )
 }
 

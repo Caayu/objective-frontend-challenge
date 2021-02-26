@@ -1,12 +1,12 @@
-import { Container } from './styles'
+import * as S from './styles'
 
 import Pagination from '../Pagination'
 
 function FooterComponent () {
   return (
-    <Container>
+    <S.Container>
       <Pagination />
-    </Container>
+    </S.Container>
   )
 }
 

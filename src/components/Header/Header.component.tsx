@@ -1,20 +1,21 @@
-import { Header, HeaderContainer, Logo, CandidateInfo } from './styles'
+import * as S from './styles'
+
 import LogoObjective from '../../assets/Logo.png'
 
 function HeaderComponent () {
   return (
-    <Header>
-      <HeaderContainer>
-        <Logo src={LogoObjective} />
-        <CandidateInfo>
+    <S.Header>
+      <S.HeaderContainer>
+        <S.Logo src={LogoObjective} />
+        <S.CandidateInfo>
           <div>
             <h1>Caio Henrique</h1>
             <h2>Teste de Front-end</h2>
           </div>
           <span>CH</span>
-        </CandidateInfo>
-      </HeaderContainer>
-    </Header>
+        </S.CandidateInfo>
+      </S.HeaderContainer>
+    </S.Header>
   )
 }
 
