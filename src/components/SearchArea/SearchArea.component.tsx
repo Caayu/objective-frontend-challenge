@@ -1,16 +1,13 @@
-import { Container, Input } from './styles'
+import { Container } from './styles'
+
+import SearchInput from '../SearchInput'
 
 function SearchArea () {
   return (
     <Container>
       <h1>Busca de personagens</h1>
       <h2>Nome do personagem</h2>
-      <Input>
-        <input type="text" placeholder="Search" />
-        <span className="material-icons">
-          search
-        </span>
-      </Input>
+      <SearchInput />
     </Container>
   )
 }
