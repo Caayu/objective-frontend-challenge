@@ -1,8 +1,10 @@
 import GlobalStyles from './styles/global.styles'
 
+import CharactersView from './views/CharactersView'
+
 const App = () => (
   <>
-    <h1 style={{ fontSize: '1.6rem' }}>hello</h1>
+    <CharactersView />
     <GlobalStyles />
   </>
 )
