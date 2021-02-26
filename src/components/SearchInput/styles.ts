@@ -9,9 +9,11 @@ export const Container = styled.div`
     border-radius: 4px;
     width: 295px;
     height: 32px;
+    padding-left: 8px;
+    color: #000;
 
     &::placeholder {
-      padding-left: 16px;
+      padding-left: 8px;
       font-size: 1.6rem;
       font-style: italic;
       font-weight: 300;
