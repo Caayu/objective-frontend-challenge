@@ -1,9 +1,5 @@
 import {
   Container,
-  Header,
-  HeaderContainer,
-  Logo,
-  CandidateInfo,
   SearchArea,
   Input,
   CharacterArea,
@@ -17,24 +13,13 @@ import {
   CharacterHeader,
   IconNavigation
 } from './styles'
-import LogoObjective from '../../assets/Logo.png'
+
+import Header from '../../components/Header'
 
 const CharactersView = () => {
   return (
     <Container>
-      <Header>
-        <HeaderContainer>
-          <Logo src={LogoObjective} />
-          <CandidateInfo>
-            <div>
-              <h1>Caio Henrique</h1>
-              <h2>Teste de Front-end</h2>
-            </div>
-            <span>CH</span>
-          </CandidateInfo>
-        </HeaderContainer>
-      </Header>
-
+      <Header />
       <CharacterArea>
         <SearchArea>
           <h1>Busca de personagens</h1>
