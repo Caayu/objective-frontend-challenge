@@ -1,7 +1,5 @@
 import {
   Container,
-  SearchArea,
-  Input,
   CharacterArea,
   CharacterList,
   Character,
@@ -15,23 +13,14 @@ import {
 } from './styles'
 
 import Header from '../../components/Header'
+import SearchArea from '../../components/SearchArea'
 
 const CharactersView = () => {
   return (
     <Container>
       <Header />
       <CharacterArea>
-        <SearchArea>
-          <h1>Busca de personagens</h1>
-          <h2>Nome do personagem</h2>
-          <Input>
-            <input type="text" placeholder="Search" />
-            <span className="material-icons">
-              search
-            </span>
-          </Input>
-        </SearchArea>
-
+        <SearchArea />
         <CharacterHeader>
           <span>Personagem</span>
           <span>Séries</span>
