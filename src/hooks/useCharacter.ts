@@ -1,10 +1,6 @@
 import { useState } from 'react'
-import axios from 'axios'
 
-const URL = 'https://gateway.marvel.com/v1/public/characters'
-const TS = '1614382676238'
-const API_KEY = 'b15cdc5a47377347ab801525fb4ed751'
-const HASH = 'efd72c43137c967b1c91dffe5eac384f'
+import marvelAPI from '../services/marvelAPI'
 
 interface CharactersResponse {
   data: {
@@ -42,7 +38,12 @@ export function useCharacters (pageLimit: number) {
       : ((page - 1) * pageLimit)
 
     try {
-      const response = await axios.get(`${URL}?ts=${TS}&apikey=${API_KEY}&hash=${HASH}&limit=${pageLimit}&offset=${virtualPage}`)
+      const response = await marvelAPI.get('', {
+        params: {
+          limit: pageLimit,
+          offset: virtualPage
+        }
+      })
       setCharacters(response.data)
     } catch (err) {
       console.log(err)
