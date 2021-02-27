@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 
 import * as S from './styles'
 
@@ -6,13 +6,16 @@ import SearchArea from '../SearchArea'
 import CharacterList from '../ChatacterList'
 
 import { useCharacters } from '../../hooks/useCharacter'
+import { PaginationContext } from '../../contexts/PaginationContext'
 
 function CharactersArea () {
   const { characters, fetchCharacters } = useCharacters(10)
+  const { actualPage } = useContext(PaginationContext)
 
   useEffect(() => {
-    fetchCharacters(0)
-  }, [])
+    fetchCharacters(actualPage)
+    console.log('actual page', actualPage)
+  }, [actualPage])
 
   useEffect(() => {
     console.log(characters)

@@ -1,10 +1,10 @@
-import GlobalStyles from './styles/global.styles'
+import Routes from './Routes'
 
-import CharactersView from './views/CharactersView'
+import GlobalStyles from './styles/global.styles'
 
 const App = () => (
   <>
-    <CharactersView />
+    <Routes />
     <GlobalStyles />
   </>
 )
