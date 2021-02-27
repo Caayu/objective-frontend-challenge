@@ -1,9 +1,23 @@
+import { useEffect } from 'react'
+
 import * as S from './styles'
 
 import SearchArea from '../SearchArea'
 import CharacterList from '../ChatacterList'
 
+import { useCharacters } from '../../hooks/useCharacter'
+
 function CharactersArea () {
+  const { characters, fetchCharacters } = useCharacters(10)
+
+  useEffect(() => {
+    fetchCharacters(0)
+  }, [])
+
+  useEffect(() => {
+    console.log(characters)
+  }, [characters])
+
   return (
     <S.Container>
       <SearchArea />
@@ -12,7 +26,9 @@ function CharactersArea () {
         <span>Séries</span>
         <span>Eventos</span>
       </S.CharacterHeader>
-      <CharacterList />
+      <S.CharacterContainer>
+        {characters && <CharacterList results={characters.data.results} />}
+      </S.CharacterContainer>
     </S.Container>
   )
 }

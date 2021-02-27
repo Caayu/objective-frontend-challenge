@@ -32,3 +32,9 @@ export const CharacterHeader = styled.div`
     }
   }
 `
+
+export const CharacterContainer = styled.div`
+  overflow: scroll;
+  width: 100%;
+  height: 500px;
+`

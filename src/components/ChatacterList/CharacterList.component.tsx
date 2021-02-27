@@ -1,48 +1,43 @@
 import * as S from './styles'
 
-function CharacterList () {
+type Props = {
+  results: {
+    id: number
+    name: string
+    thumbnail: {
+      path: string
+      extension: string
+    }
+    events: {
+      items: {
+        name: string
+      }[]
+    }
+    series: {
+      items: {
+        name: string
+      }[]
+    }
+  }[]
+}
+
+function CharacterList ({ results }: Props) {
   return (
     <>
-      <S.CharacterItem>
-        <S.Character>
-          <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-          <span>Bruce Banner</span>
-        </S.Character>
-        <S.Series>
-          Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-        </S.Series>
-        <S.Events>AvX Demon in the Bottle Dynasty M</S.Events>
-      </S.CharacterItem>
-      <S.CharacterItem>
-        <S.Character>
-          <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-          <span>Bruce Banner</span>
-        </S.Character>
-        <S.Series>
-          Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-        </S.Series>
-        <S.Events>AvX Demon in the Bottle Dynasty M</S.Events>
-      </S.CharacterItem>
-      <S.CharacterItem>
-        <S.Character>
-          <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-          <span>Bruce Banner</span>
-        </S.Character>
-        <S.Series>
-          Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-        </S.Series>
-        <S.Events>AvX Demon in the Bottle Dynasty M</S.Events>
-      </S.CharacterItem>
-      <S.CharacterItem>
-        <S.Character>
-          <img src="https://i.pinimg.com/originals/a3/f2/a3/a3f2a3112b94c39e4fb6a50d2295963c.jpg" alt="aaa"/>
-          <span>Bruce Banner</span>
-        </S.Character>
-        <S.Series>
-          Marvel Universe Avengers: Ultron Revolution Hulk Secret Avengers
-        </S.Series>
-        <S.Events>AvX Demon in the Bottle Dynasty M</S.Events>
-      </S.CharacterItem>
+      {
+        results && results.map(hero => (
+          <S.CharacterItem key={hero.id}>
+            <S.Character>
+              <img src={hero.thumbnail.path + '.' + hero.thumbnail.extension} alt="aaa"/>
+              <span>{hero.name}</span>
+            </S.Character>
+            <S.Series>
+              {hero.series.items.length > 0 ? hero.series.items[0].name : ''}
+            </S.Series>
+            <S.Events>{hero.events.items.length > 0 ? hero.events.items[0].name : ''}</S.Events>
+          </S.CharacterItem>
+        ))
+      }
     </>
   )
 }
