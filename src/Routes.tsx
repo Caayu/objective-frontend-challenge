@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import PaginationContextProvider from './contexts/PaginationContext'
+import GlobalContextProvider from './contexts/GlobalContext'
 
 import CharactersView from './views/CharactersView'
 
 export default function Routes () {
   return (
     <Router>
-      <PaginationContextProvider>
+      <GlobalContextProvider>
         <Switch>
           <Route component={CharactersView} exact path="/" />
         </Switch>
-      </PaginationContextProvider>
+      </GlobalContextProvider>
     </Router>
   )
 }

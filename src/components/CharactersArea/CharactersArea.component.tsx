@@ -1,38 +1,46 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 
 import * as S from './styles'
 
 import SearchArea from '../SearchArea'
 import CharacterList from '../ChatacterList'
 
-import { useCharacters } from '../../hooks/useCharacter'
-import { PaginationContext } from '../../contexts/PaginationContext'
+import { GlobalContext } from '../../contexts/GlobalContext'
 
 function CharactersArea () {
-  const { characters, fetchCharacters } = useCharacters(10)
-  const { actualPage } = useContext(PaginationContext)
+  const { characters } = useContext(GlobalContext)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetchCharacters(actualPage)
-    console.log('actual page', actualPage)
-  }, [actualPage])
+    if (characters) {
+      setIsLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     console.log(characters)
-  }, [characters])
+  }, [])
 
   return (
-    <S.Container>
-      <SearchArea />
-      <S.CharacterHeader>
-        <span>Personagem</span>
-        <span>Séries</span>
-        <span>Eventos</span>
-      </S.CharacterHeader>
-      <S.CharacterContainer>
-        {characters && <CharacterList results={characters.data.results} />}
-      </S.CharacterContainer>
-    </S.Container>
+    <>
+      {
+        !isLoading
+          ? (
+            <S.Container>
+              <SearchArea />
+              <S.CharacterHeader>
+                <span>Personagem</span>
+                <span>Séries</span>
+                <span>Eventos</span>
+              </S.CharacterHeader>
+              <S.CharacterContainer>
+                <CharacterList results={characters?.data?.results} />
+              </S.CharacterContainer>
+            </S.Container>
+            )
+          : (<h1>CARREGANDO...</h1>)
+      }
+    </>
   )
 }
 
