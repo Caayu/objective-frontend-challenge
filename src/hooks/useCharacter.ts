@@ -1,36 +1,10 @@
 import { useState } from 'react'
 
 import marvelAPI from '../services/marvelAPI'
-
-interface CharactersResponse {
-  data: {
-    count: number
-    limit: number
-    offset: number
-    total: number
-    results: {
-      id: number
-      name: string
-      thumbnail: {
-        path: string
-        extension: string
-      }
-      events: {
-        items: {
-          name: string
-        }[]
-      }
-      series: {
-        items: {
-          name: string
-        }[]
-      }
-    }[]
-  }
-}
+import { MarvelAPIResponse } from '../types/marvel-api-response'
 
 export function useCharacters (pageLimit: number) {
-  const [characters, setCharacters] = useState<CharactersResponse>()
+  const [characters, setCharacters] = useState<MarvelAPIResponse>()
 
   async function fetchCharacters (page: number) {
     const virtualPage = ((page - 1) * pageLimit) <= 0
