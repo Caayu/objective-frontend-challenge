@@ -16,7 +16,7 @@ function Pagination () {
       <S.IconNavigation onClick={() => dispatch(paginate(actualPage - 1))}>arrow_back_ios</S.IconNavigation>
       {
         Array(5).fill('').map((_, index) => {
-          return (<S.PaginationButton key={index} onClick={() => dispatch(paginate(index + 1))} >{index + 1}</S.PaginationButton>)
+          return (<S.PaginationButton key={index} onClick={() => dispatch(paginate(index + 1))} >{actualPage + index}</S.PaginationButton>)
         })
       }
       <S.IconNavigation onClick={() => dispatch(paginate(actualPage + 1))}>arrow_forward_ios</S.IconNavigation>

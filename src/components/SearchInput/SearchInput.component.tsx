@@ -1,20 +1,28 @@
-import React, { useRef, useContext } from 'react'
-import { GlobalContext } from '../../contexts/GlobalContext'
+import React, { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store'
+// import { GlobalContext } from '../../contexts/GlobalContext'
+// import { RootState } from '../../store'
+import { fetchCharacters, fetchFilterCharacters } from '../../store/Characters.store'
 
 import * as S from './styles'
 
 const SearchInput = () => {
-  const { characters, setCharacters } = useContext(GlobalContext)
+  // const { setCharacters } = useContext(GlobalContext)
+  const dispatch = useDispatch()
+  // const characters = useSelector((state: RootState) => state.character.characters)
   const inputRef = useRef<HTMLInputElement>(null)
+  const actualPage = useSelector((state: RootState) => state.character.actualPage)
 
   function handleFocus () {
     inputRef.current?.focus()
   }
 
   function filterResult (e: React.ChangeEvent<HTMLInputElement>) {
-    const value = characters?.data?.results.filter(character => character.name.includes(e.target.value))
-    const newobjt = Object.assign({}, characters, { results: [value] })
-    setCharacters(newobjt)
+    if (e.target.value === '') {
+      dispatch(fetchCharacters(actualPage))
+    }
+    dispatch(fetchFilterCharacters(actualPage, e.target.value))
   }
 
   return (
