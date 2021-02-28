@@ -1,12 +1,18 @@
 import Routes from './Routes'
 
 import GlobalStyles from './styles/global.styles'
+import { useEffect } from 'react'
 
-const App = () => (
-  <>
-    <Routes />
-    <GlobalStyles />
-  </>
-)
+const App = () => {
+  useEffect(() => {
+  }, [])
+
+  return (
+    <>
+      <Routes />
+      <GlobalStyles />
+    </>
+  )
+}
 
 export default App

@@ -9,6 +9,7 @@ interface GlobalContextTypes {
   actualPage: number
   setActualPage: (value: number) => void
   characters: MarvelAPIResponse
+  setCharacters: (characters: MarvelAPIResponse) => void
 }
 
 export const GlobalContext = createContext<GlobalContextTypes>({} as GlobalContextTypes)
@@ -55,16 +56,18 @@ const GlobalProvider: FC = ({ children }) => {
   useEffect(() => {
     const queryParams = qs.parse(location.search)
 
+    console.log('MUDOU', characters)
+
     history.push({
       search: qs.stringify({
         ...queryParams,
         page: actualPage
       })
     })
-  }, [actualPage])
+  }, [actualPage, characters])
 
   return (
-    <GlobalContext.Provider value={{ actualPage, setActualPage, characters }}>
+    <GlobalContext.Provider value={{ actualPage, setActualPage, characters, setCharacters }}>
       {children}
     </GlobalContext.Provider>
   )

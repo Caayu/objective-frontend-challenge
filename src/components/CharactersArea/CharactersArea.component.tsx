@@ -1,25 +1,27 @@
-import { useEffect, useContext, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import * as S from './styles'
 
 import SearchArea from '../SearchArea'
 import CharacterList from '../ChatacterList'
 
-import { GlobalContext } from '../../contexts/GlobalContext'
+import { RootState } from '../../store'
+import { fetchCharacters } from '../../store/Characters.store'
 
 function CharactersArea () {
-  const { characters } = useContext(GlobalContext)
   const [isLoading, setIsLoading] = useState(true)
+  const characters = useSelector((state: RootState) => state.character.characters)
+  const actualPage = useSelector((state: RootState) => state.character.actualPage)
+  const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(fetchCharacters(actualPage))
+
     if (characters) {
       setIsLoading(false)
     }
-  }, [])
-
-  useEffect(() => {
-    console.log(characters)
-  }, [])
+  }, [actualPage])
 
   return (
     <>
