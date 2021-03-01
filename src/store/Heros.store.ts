@@ -4,30 +4,30 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import marvelAPI from '../services/marvelAPI'
 
-const characters = createSlice({
-  name: 'characters',
+const heros = createSlice({
+  name: 'heros',
   initialState: {
-    characters: {} as MarvelAPIResponse,
+    heros: {} as MarvelAPIResponse,
     actualPage: 1,
-    filterCharacters: {} as MarvelAPIResponse
+    filterHeros: {} as MarvelAPIResponse
   },
   reducers: {
-    fetchMarvelCharacters (state, action: PayloadAction<MarvelAPIResponse>) {
-      state.characters = action.payload
+    fetchMarvelHeros (state, action: PayloadAction<MarvelAPIResponse>) {
+      state.heros = action.payload
     },
     paginate (state, action) {
       state.actualPage = action.payload
     },
     filterResults (state, action: PayloadAction<MarvelAPIResponse>) {
-      state.characters = action.payload
+      state.heros = action.payload
     }
   }
 })
 
-export default characters.reducer
-export const { fetchMarvelCharacters, paginate, filterResults } = characters.actions
+export default heros.reducer
+export const { fetchMarvelHeros, paginate, filterResults } = heros.actions
 
-export function fetchCharacters (page: number): AppThunk {
+export function fetchHeros (page: number): AppThunk {
   return async function (dispatch: AppDispatch) {
     const response = await marvelAPI.get('', {
       params: {
@@ -36,11 +36,11 @@ export function fetchCharacters (page: number): AppThunk {
       }
     })
     console.log(response.data)
-    dispatch(fetchMarvelCharacters(response.data))
+    dispatch(fetchMarvelHeros(response.data))
   }
 }
 
-export function fetchFilterCharacters (page: number, name: string): AppThunk {
+export function fetchFilterHeros (page: number, name: string): AppThunk {
   return async function (dispatch: AppDispatch) {
     const response = await marvelAPI.get('', {
       params: {

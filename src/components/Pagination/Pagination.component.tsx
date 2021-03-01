@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store'
-import { paginate } from '../../store/Characters.store'
+import { paginate } from '../../store/Heros.store'
 
 import * as S from './styles'
 
 function Pagination () {
   const dispatch = useDispatch()
-  const characters = useSelector((state: RootState) => state.character.characters)
-  const actualPage = useSelector((state: RootState) => state.character.actualPage)
+  const heros = useSelector((state: RootState) => state.heros.heros)
+  const actualPage = useSelector((state: RootState) => state.heros.actualPage)
 
   return (
     <S.Container>
@@ -20,7 +20,7 @@ function Pagination () {
         })
       }
       <S.IconNavigation onClick={() => dispatch(paginate(actualPage + 1))}>arrow_forward_ios</S.IconNavigation>
-      <S.IconNavigation onClick={() => dispatch(paginate(Math.round(characters?.data?.total / 10) + 1))}>arrow_forward</S.IconNavigation>
+      <S.IconNavigation onClick={() => dispatch(paginate(Math.round(heros?.data?.total / 10) + 1))}>arrow_forward</S.IconNavigation>
     </S.Container>
   )
 }

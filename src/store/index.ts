@@ -1,11 +1,11 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 
-import charactersStore from './Characters.store'
+import herosStore from './Heros.store'
 
 const store = configureStore({
   reducer: {
-    character: charactersStore
+    heros: herosStore
   }
 })
 

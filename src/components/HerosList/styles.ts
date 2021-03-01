@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CharacterItem = styled.div`
+export const HerosItem = styled.div`
   display: flex;
   background-color: #fff;
   border-radius: 4px;
@@ -16,9 +16,10 @@ export const CharacterItem = styled.div`
   margin-bottom: 8px;
 
   box-shadow: 0 0 5px #00000033;
+  cursor: pointer;
 `
 
-export const Character = styled.div`
+export const Heros = styled.div`
   display: flex;
   align-items: center;
   width: 380px;

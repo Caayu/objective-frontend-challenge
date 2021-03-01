@@ -1,27 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 
 import * as S from './styles'
 
 import SearchArea from '../SearchArea'
-import CharacterList from '../ChatacterList'
+import HerosList from '../HerosList'
 
 import { RootState } from '../../store'
-import { fetchCharacters } from '../../store/Characters.store'
+import { fetchHeros } from '../../store/Heros.store'
 
-function CharactersArea () {
+function HerosShow () {
   const [isLoading, setIsLoading] = useState(true)
-  const characters = useSelector((state: RootState) => state.character.characters)
-  const actualPage = useSelector((state: RootState) => state.character.actualPage)
+  const heros = useSelector((state: RootState) => state.heros.heros)
+  const actualPage = useSelector((state: RootState) => state.heros.actualPage)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchCharacters(actualPage))
+  const history = useHistory()
 
-    if (characters) {
+  useEffect(() => {
+    dispatch(fetchHeros(actualPage))
+
+    if (heros) {
       setIsLoading(false)
     }
   }, [actualPage])
+
+  function onClick () {
+    history.push('/heros/123')
+  }
 
   return (
     <>
@@ -36,7 +43,7 @@ function CharactersArea () {
                 <span>Eventos</span>
               </S.CharacterHeader>
               <S.CharacterContainer>
-                <CharacterList results={characters?.data?.results} />
+                <HerosList onClick={onClick} results={heros?.data?.results} />
               </S.CharacterContainer>
             </S.Container>
             )
@@ -46,4 +53,4 @@ function CharactersArea () {
   )
 }
 
-export default CharactersArea
+export default HerosShow

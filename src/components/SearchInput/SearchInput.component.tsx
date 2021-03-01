@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 // import { GlobalContext } from '../../contexts/GlobalContext'
 // import { RootState } from '../../store'
-import { fetchCharacters, fetchFilterCharacters } from '../../store/Characters.store'
+import { fetchHeros, fetchFilterHeros } from '../../store/Heros.store'
 
 import * as S from './styles'
 
 const SearchInput = () => {
-  // const { setCharacters } = useContext(GlobalContext)
+  // const { setheros } = useContext(GlobalContext)
   const dispatch = useDispatch()
-  // const characters = useSelector((state: RootState) => state.character.characters)
+  // const heros = useSelector((state: RootState) => state.character.heros)
   const inputRef = useRef<HTMLInputElement>(null)
-  const actualPage = useSelector((state: RootState) => state.character.actualPage)
+  const actualPage = useSelector((state: RootState) => state.heros.actualPage)
 
   function handleFocus () {
     inputRef.current?.focus()
@@ -20,9 +20,9 @@ const SearchInput = () => {
 
   function filterResult (e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.value === '') {
-      dispatch(fetchCharacters(actualPage))
+      dispatch(fetchHeros(actualPage))
     }
-    dispatch(fetchFilterCharacters(actualPage, e.target.value))
+    dispatch(fetchFilterHeros(actualPage, e.target.value))
   }
 
   return (

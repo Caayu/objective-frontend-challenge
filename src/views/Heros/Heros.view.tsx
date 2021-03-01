@@ -1,17 +1,17 @@
 import * as S from './styles'
 
 import Header from '../../components/Header'
-import CharacterArea from '../../components/CharactersArea'
+import HerosShow from '../../components/HerosShow'
 import Footer from '../../components/Footer'
 
-const CharactersView = () => {
+const Heros = () => {
   return (
     <S.Container>
       <Header />
-      <CharacterArea />
+      <HerosShow />
       <Footer />
     </S.Container>
   )
 }
 
-export default CharactersView
+export default Heros
