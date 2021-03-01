@@ -4,6 +4,8 @@ export const Header = styled.header`
   width: 100%;
   height: 64px;
   background-color: #fff;
+
+  box-shadow: 0px 0px 3px #333, 0px 0px 8px #CCC;
 `
 
 export const HeaderContainer = styled.div`
