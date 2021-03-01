@@ -1,16 +1,15 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import debounce from 'lodash.debounce'
+
 import { RootState } from '../../store'
-// import { GlobalContext } from '../../contexts/GlobalContext'
-// import { RootState } from '../../store'
+
 import { fetchHeros, fetchFilterHeros } from '../../store/Heros.store'
 
 import * as S from './styles'
 
 const SearchInput = () => {
-  // const { setheros } = useContext(GlobalContext)
   const dispatch = useDispatch()
-  // const heros = useSelector((state: RootState) => state.character.heros)
   const inputRef = useRef<HTMLInputElement>(null)
   const actualPage = useSelector((state: RootState) => state.heros.actualPage)
 
@@ -18,11 +17,13 @@ const SearchInput = () => {
     inputRef.current?.focus()
   }
 
-  function filterResult (e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.value === '') {
-      dispatch(fetchHeros(actualPage))
-    }
-    dispatch(fetchFilterHeros(actualPage, e.target.value))
+  function filterResult (event: React.ChangeEvent<HTMLInputElement>) {
+    debounce((e) => {
+      if (e.target.value === '') {
+        dispatch(fetchHeros(actualPage))
+      }
+      dispatch(fetchFilterHeros(actualPage, e.target.value))
+    }, 500)(event)
   }
 
   return (
