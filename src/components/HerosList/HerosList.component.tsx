@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 import * as S from './styles'
 
 type Props = {
@@ -20,16 +21,21 @@ type Props = {
       }[]
     }
   }[]
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-function HerosList ({ results, onClick }: Props) {
+function HerosList ({ results }: Props) {
+  const history = useHistory()
+
+  function handleClick (id: number) {
+    history.push(`/heros/${id}`)
+  }
+
   return (
     <>
       {
         results &&
           (results.map(hero => (
-            <S.HerosItem onClick={onClick} key={hero.id}>
+            <S.HerosItem onClick={() => handleClick(hero.id)} key={hero.id}>
               <S.Heros>
                 <img src={hero.thumbnail.path + '.' + hero.thumbnail.extension} alt="aaa"/>
                 <span>{hero.name}</span>

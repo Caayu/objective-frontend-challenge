@@ -8,3 +8,5 @@ const HASH = 'efd72c43137c967b1c91dffe5eac384f'
 export default axios.create({
   baseURL: `${URL}?ts=${TS}&apikey=${API_KEY}&hash=${HASH}`
 })
+
+export const heroMarvelAPI = (heroID: string) => axios.get(`${URL}/${heroID}?ts=${TS}&apikey=${API_KEY}&hash=${HASH}`)

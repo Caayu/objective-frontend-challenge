@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
 
 import * as S from './styles'
 
@@ -16,8 +15,6 @@ function HerosShow () {
   const actualPage = useSelector((state: RootState) => state.heros.actualPage)
   const dispatch = useDispatch()
 
-  const history = useHistory()
-
   useEffect(() => {
     dispatch(fetchHeros(actualPage))
 
@@ -25,10 +22,6 @@ function HerosShow () {
       setIsLoading(false)
     }
   }, [actualPage])
-
-  function onClick () {
-    history.push('/heros/123')
-  }
 
   return (
     <>
@@ -43,7 +36,7 @@ function HerosShow () {
                 <span>Eventos</span>
               </S.CharacterHeader>
               <S.CharacterContainer>
-                <HerosList onClick={onClick} results={heros?.data?.results} />
+                <HerosList results={heros?.data?.results} />
               </S.CharacterContainer>
             </S.Container>
             )
