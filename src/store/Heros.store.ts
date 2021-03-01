@@ -35,7 +35,6 @@ export function fetchHeros (page: number): AppThunk {
         offset: (page - 1) * 10
       }
     })
-    console.log(response.data)
     dispatch(fetchMarvelHeros(response.data))
   }
 }
@@ -49,7 +48,6 @@ export function fetchFilterHeros (page: number, name: string): AppThunk {
         nameStartsWith: name
       }
     })
-    console.log(response.data)
     dispatch(filterResults(response.data))
   }
 }

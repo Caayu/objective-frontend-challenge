@@ -45,7 +45,7 @@ const GlobalProvider: FC = ({ children }) => {
       })
       setCharacters(response.data)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 
@@ -55,8 +55,6 @@ const GlobalProvider: FC = ({ children }) => {
 
   useEffect(() => {
     const queryParams = qs.parse(location.search)
-
-    console.log('MUDOU', characters)
 
     history.push({
       search: qs.stringify({
